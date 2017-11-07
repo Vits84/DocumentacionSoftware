@@ -1,0 +1,67 @@
+/***********************
+		Ionic
+ ***********************/
+
+
+
+/------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 07-11-2017 | Instalación Ionic Debian 9 | Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________
+
+	 00-00-0000 | -------------------------- | ------------ |  ------------
+	_______________________________________________________________________
+
+
+ --------------------------------------------------------------------------/
+
+
+
+
+
+
+Instalación Debian 9:
+
+	Tomando de : https://ionicframework.com/docs/intro/installation/
+	Consultado : 07 - 11 - 2017
+
+	-> Instalación Node.js
+
+			$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+			$ sudo apt-get install -y nodejs
+			$ sudo apt-get install -y build-essential
+
+	-> Instalación Ionic
+
+			$ sudo npm install -g ionic cordova
+
+
+Iniciando una aplicación en Ionic:
+
+
+	Tomando de : https://ionicframework.com/docs/intro/tutorial/
+	Consultado : 07 - 11 - 2017
+
+	-> Inicialización aplicación
+
+			$ ionic start <nombre_proyecto> <plantilla>
+			
+			Plantillas:
+				* tabs 
+				* sidemenu
+				* blank
+				* super
+				* tutorial
+	
+	-> Correr aplicación 
+
+			$ cd <directorio_app>
+			$ ionic serve
+
+
+
+
