@@ -1,0 +1,203 @@
+/***********************
+	OpenProject
+ ***********************/
+
+
+Instalación Centos 7: 
+
+	Preparación Entorno
+
+		$ groupadd openproject
+		$ useradd --create-home --gid openproject openproject
+		$ passwd openproject
+
+	Librerias Requeridas
+
+		$ yum groupinstall 'Development Tools' -y 
+		$ yum install openssl-devel readline-devel zlib-devel  ImageMagick ImageMagick-perl ImageMagick-c++-devel ImageMagick-devel ImageMagick-c++ memcached-devel libmemcached-devel libmemcached libmemcached readline readline-devel libyaml libyaml-devel  libyaml-devel openssl ImageMagick-devel libffi git curl  libxml2-devel libxml2 -y 
+		$ yum install memcached-devel libmemcached-devel libmemcached memcached mysql-devel  postgresql-devel -y 
+
+	Requisito Instalar postgres	
+
+	
+
+	Instalación Ruby
+
+		Preparación
+		$ su - openproject --login 
+		$ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+		$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+		$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+		$ source ~/.bash_profile
+		Instalación Ruby
+		$ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+		$ rbenv install 2.3.0
+		$ rbenv rehash
+		$ rbenv global 2.3.0
+		Revisar la versión
+		$ ruby --version
+
+	Instalación Node
+
+		Preparación
+		$ su - openproject --login 
+		$ git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
+		$ echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bash_profile
+		$ echo 'eval "$(nodenv init -)"' >> ~/.bash_profile
+		$ source ~/.bash_profile
+		Intalación Node 
+		$ git clone git://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
+		$ nodenv install 6.9.1
+		$ nodenv rehash
+		$ nodenv global 6.9.1
+		Revisar Versión
+		$ node --version
+
+	Install Openproject
+		(openProject Edición Comunitaria)
+		$ su openproject --login
+		$ cd ~
+		$ git clone https://github.com/opf/openproject-ce.git --branch stable/7 --depth 1
+		$ cd openproject-ce
+		$ gem install bundler
+		$ nano Gemfile
+			Cambiar por la Versión instalada la linea
+			ruby '~> <version ruby ruby ruby ejemplo 2.3.0>'
+		$ gem install activerecord rmagick
+		$ bundle install --deployment --without  mysql postgres sqlite development test therubyracer docker
+		$ npm install
+			En Caso de Error:
+
+				npm ERR! node v6.9.1
+				npm ERR! npm  v3.10.8
+				npm ERR! code EBADPLATFORM
+
+				npm ERR! notsup Unsupported platform for fsevents@1.1.2: wanted {"os":"darwin","arch":"any"} 	                             (current: {"os":"linux","arch":"x64"})
+				npm ERR! notsup Valid OS:    darwin
+				npm ERR! notsup Valid Arch:  any
+				npm ERR! notsup Actual OS:   linux
+				npm ERR! notsup Actual Arch: x64
+
+			Ejecutar
+				$ npm install -g npm@4.0
+				$ npm i --no-optional
+		
+		Configuración 
+		$ cp config/database.yml.example config/database.yml
+			Comentar todas las lineas y agregar de acuerdo al adaptador (postgresql, mysql):
+
+
+				production:
+				  adapter: postgresql
+				  database: openproject
+				  host: localhost
+				  username: openproject
+				  port:5432
+				  pool: 5
+				  password: openproject
+				  encoding: utf-8
+
+
+				development:
+				  adapter: postgresql
+				  database: openproject_dev
+				  host: localhost
+				  username: openproject
+				  port:5432
+				  pool: 5
+				  password: openproject
+				  encoding: utf-8
+
+				test:
+				  adapter: postgresql
+				  database: openproject_test
+				  host: localhost
+				  username: openproject
+				  password: openproject
+				  port:5432
+				  pool: 5
+				  encoding: utf8
+	
+		$ cp config/configuration.yml.example config/configuration.yml
+		$ nano config/configuration.yml
+
+			  email_delivery_method: :smtp
+				  smtp_address: smtp.gmail.com
+				  smtp_port: 587
+				  smtp_domain: smtp.gmail.com
+				  smtp_authentication: plain
+				  smtp_user_name: "*********@gmail.com"
+				  smtp_password: "******"
+				  smtp_enable_starttls_auto: true
+
+
+		Agregar al archivo Gemfile		
+		$nano Gemfile
+			# Entorno de Desarrollo
+			group :development do
+			  gem 'pg','~> 0.21.0'
+			  gem 'active_record_query_trace'
+
+			end
+			# Entorno de Producción
+			group :production do
+			  gem 'pg','~> 0.21.0'
+	                  gem 'active_record_query_trace'
+			end
+
+			#Entorno de Pruebas
+			group :test do
+			  gem 'pg', '~> 0.21.0'
+			  gem 'active_record_query_trace'
+			end
+		$ bundle install
+		
+		Creación Base de Datos(Dependiendo del Entorno)	
+		$ RAILS_ENV="development" ./bin/rake db:create
+		$ RAILS_ENV="development" ./bin/rake db:migrate
+		$ RAILS_ENV="development" ./bin/rake db:seed # O configurar idioma RAILS_ENV="development" LOCALE=es ./bin/rake db:seed
+		$ RAILS_ENV="development" ./bin/rake assets:precompile
+		(En caso de Visualización de DEPRECATION WARNING: alias_method_chain is deprecated)
+		$ nano config/application.rb
+			Adicionar linea posterior a require 'rails/all'
+		
+				ActiveSupport::Deprecation.behavior = :silence
+
+	
+		
+		Configuración passenger
+		(Usuario root)
+		$ chmod o+x "/home/openproject"
+		$ curl https://install.meteor.com | /bin/sh
+		$ su openproject --login
+		$ cd ~/openproject-ce
+		$ npm install -g meteorite
+		$ gem install passenger
+		$ bundle install
+		$ passenger-install-apache2-module
+		
+		Inicializar OpenProject
+		$ passenger start # Inicia OpenProject en Entorno de Desarrollo y en el <host>:3000
+		$ passenger start -e production # Inicia OpenProject en Entorno de Producción y en el <host>:3000
+
+
+		Configuración Apache (root)
+		$ yum install httpd  apr-devel apr-util-devel httpd-devel libcurl-devel -y 
+		$ yum install httpd  apr-devel apr-util-devel httpd-devel libcurl-devel -y 
+		$ firewall-cmd --permanent --add-service=http
+		$ firewall-cmd --permanent --add-service=https
+		$ firewall-cmd --permanent --add-service=smtp
+		$ firewall-cmd --zone=public --add-port=3000/tcp --permanent
+		$ systemctl enable firewalld
+		$ firewall-cmd --reload	
+
+
+
+		
+		
+
+
+
+
+
+

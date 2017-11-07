@@ -1,0 +1,22 @@
+/***********************
+	Fail2ban
+ ***********************/
+
+
+Intalación: 
+
+	$ apt-get install fail2ban -y
+
+Configuración 
+
+	$ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+Editar los siguientes parametros
+
+	bantime  = 31104000 => tiempo de Banneo
+	maxretry = 1        => Número de Intentos Permitidos
+
+
+Log de Ip Banneadas 
+	/var/log/auth.log 
+	

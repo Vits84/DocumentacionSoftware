@@ -1,0 +1,49 @@
+/***********************
+	Zabbix
+ ***********************/
+
+
+Instalación Centos 7: 
+
+	$ rpm -ivh http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-1.el7.centos.noarch.rpm
+	$ yum install zabbix-server-pgsql zabbix-web-pgsql -y 
+	
+	Crear una base de datos para el aplicativo
+	
+	$ zcat /usr/share/doc/zabbix-server-pgsql-3.4.2/create.sql.gz | psql -U <usuario_base_datos> <nombre_base_datos>
+	$ zcat /usr/share/doc/zabbix-server-pgsql-3.4.2/create.sql.gz | psql -U <usuario_base_datos> <nombre_base_datos>
+	$ nano /etc/zabbix/zabbix_server.conf   
+		Cambiar informacion:
+			DBHost=<ip_servidor>
+			DBPort=5432
+			DBName=zabbix
+			DBUser=zabbix_user
+			DBPassword=zabbix_pass
+
+	Configuración Selinux
+	$ ausearch -c 'zabbix_server' --raw | audit2allow -M my-zabbixserver
+	$ semodule -i my-zabbixserver.pp
+	$ ausearch -c 'zabbix_server' --raw | audit2allow -M my-zabbixserver
+          semodule -i my-zabbixserver.pp
+
+	$ systemctl start zabbix-server
+	$ systemctl enable zabbix-server
+	$ nano /etc/httpd/conf.d/zabbix.conf
+		Verificar Variables
+			        php_value max_execution_time 300
+				php_value memory_limit 128M
+				php_value post_max_size 16M
+				php_value upload_max_filesize 2M
+				php_value max_input_time 300
+				php_value always_populate_raw_post_data -1
+				php_value date.timezone America/Bogota
+	$ setsebool -P httpd_can_connect_zabbix on
+	$ setsebool -P httpd_can_network_connect_db on
+	$ systemctl start httpd
+	__________________________________________________________________
+	$ yum install zabbix-agent
+	$ service zabbix-agent start
+
+	Ajuste Firewall
+	$ firewall-cmd --zone=public --permanent --add-service=http
+	$ systemctl restart firewalld.service

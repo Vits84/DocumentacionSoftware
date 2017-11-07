@@ -1,0 +1,16 @@
+/***********************
+      	Xrandr
+ ***********************/
+
+Crear nueva resolución
+
+	* $ cvt 1152 864 #parametros resolucion horizontal y vertical
+		Resultado:
+			# 1152x864 59.96 Hz (CVT 1.00M3) hsync: 53.78 kHz; pclk: 81.75 MHz
+			Modeline "1152x864_60.00"   81.75  1152 1216 1336 1520  864 867 871 897 -hsync +vsync
+
+	* $ xrandr --newmode <agregar segunda linea>
+		xrandr --newmode "1152x864_60.00"   81.75  1152 1216 1336 1520  864 867 871 897 -hsync +vsync
+
+	* $ xrandr --addmode <identificador pantalla> "1152x864_60.00"
+		xrandr --addmode  DVI-I-1 "1152x864_60.00"

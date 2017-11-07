@@ -1,0 +1,21 @@
+/***********************
+      	xdebug
+ ***********************/
+
+Ampliar información mostrada en Xdebug: 
+	ini_set('xdebug.var_display_max_depth', 5);
+	ini_set('xdebug.var_display_max_children', 256);
+	ini_set('xdebug.var_display_max_data', 1024);
+
+Para que la configuración quede por defecto:
+
+	* Editar el Archivo php.ini
+    * Agregar al Final: 
+		[xdebug]
+
+		;Configuración para Visualización de de arreglos
+
+		xdebug.var_display_max_depth = 5
+		xdebug.var_display_max_children = 256
+		xdebug.var_display_max_data = 1024 
+

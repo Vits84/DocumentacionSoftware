@@ -1,0 +1,48 @@
+/***********************
+	PostgreSql
+ ***********************/
+
+
+Instalación Centos 7: 
+
+	$ yum install postgresql-server postgresql-contrib -y
+	$ postgresql-setup initdb
+	$ nano /var/lib/pgsql/data/pg_hba.conf
+        	Reemplazar:
+			host    all             all             127.0.0.1/32            md5
+			host    all             all             ::1/128                 md5
+		Agregar debajo de la linea que contiene la dirección local, la dirección desde donde se va acceder
+			host    all             all             <Ip_desde_donde se accede>/24                 md5			
+	$ nano /var/lib/pgsql/data/postgresql.conf
+		Verificar que este de esta manera si no reemplazar con: 
+				listen_addresses = '*'          	# what IP address(es) to listen on;
+                                				        # comma-separated list of addresses;
+                                				        # defaults to 'localhost'; use '*' for all
+                                				        # (change requires restart)
+				port = 5432                             # (change requires restart)
+
+
+			
+	$ systemctl start postgresql
+	$ systemctl enable postgresql
+	$ sudo -i -u postgres
+	$ psql
+	$ ALTER USER postgres WITH PASSWORD 'postgres';
+	$ \q
+	$ firewall-cmd --zone=public --add-port=5432/tcp --permanent
+	$ systemctl restart firewalld.service
+
+
+Backup Terminal Base de datos
+
+	$ PGUSER=<usuario> PGPASSWORD=<password> pg_dump -h <direccion base de datos> -d <base_datos> > <nombre_archivo_backup(.sql; .backup)>
+
+Restaurar Terminal Backup Base de Datos
+	
+	$ PGUSER=<usuario> PGPASSWORD=<password> psql -h <direccion base de datos> -d <base_datos> -f <nombre_archivo_backup(.sql; .backup)>
+
+
+
+
+
+
