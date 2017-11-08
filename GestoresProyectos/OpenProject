@@ -3,7 +3,29 @@
  ***********************/
 
 
-Instalación Centos 7: 
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 08-11-2017 | Instalación Openproject Version 7					| Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________________________________
+
+	 
+	_______________________________________________________________________________________________
+
+
+ --------------------------------------------------------------------------------------------------/
+
+
+Centos 7: 
+
+
+	Instalación 
+
 
 	Preparación Entorno
 
@@ -189,7 +211,65 @@ Instalación Centos 7:
 		$ firewall-cmd --permanent --add-service=smtp
 		$ firewall-cmd --zone=public --add-port=3000/tcp --permanent
 		$ systemctl enable firewalld
-		$ firewall-cmd --reload	
+		$ firewall-cmd --reload
+
+		$ nano /etc/httpd/conf/httpd.conf
+
+			Agregar las siguientes lineas al final:
+
+			   LoadModule passenger_module /home/openproject/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/passenger-5.1.11/buildout/apache2/mod_passenger.so
+			   <IfModule mod_passenger.c>
+			     PassengerRoot /home/openproject/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/passenger-5.1.11
+			     PassengerDefaultRuby /home/openproject/.rbenv/versions/2.3.0/bin/ruby
+			   </IfModule>
+
+	    $ mkdir /etc/httpd/sites-available
+		$ mkdir /etc/httpd/sites-enabled
+		$ nano /etc/httpd/conf/httpd.conf
+
+			Comentar la linea:
+
+			#IncludeOptional conf.d/*.conf
+
+			Agregar la final del archivo:
+
+			IncludeOptional sites-enabled/*.conf
+
+		$ nano /etc/httpd/sites-available/openproject.conf
+
+			Agregar:
+
+			SetEnv EXECJS_RUNTIME Disabled
+
+			<VirtualHost *:80>
+			   ServerName midominio
+			   # !!! Be sure to point DocumentRoot to 'public'!
+			   DocumentRoot /home/openproject/openproject-ce/public
+			   <Directory /home/openproject/openproject-ce/public>
+			      # This relaxes Apache security settings.
+			      AllowOverride all
+			      # MultiViews must be turned off.
+			      Options -MultiViews
+			      # Uncomment this if you're on Apache >= 2.4:
+			      Require all granted
+			   </Directory>
+
+			   # Request browser to cache assets
+			   <Location /assets/>
+			     ExpiresActive On ExpiresDefault "access plus 1 year"
+			   </Location>
+
+			</VirtualHost>
+
+		$ ln -s /etc/httpd/sites-available/openproject.conf /etc/httpd/sites-enabled/openproject.conf
+		$ service httpd restart
+
+
+		Nota:
+			Si al intental ingresar al sitio no se puede acceder o dice permisos de acceso se recomienda revisar
+			las notificaciones de selinux (resolver con las respectivas correcciones mostradas en con el comando
+			journalctl -xe) o  deshabilitarlo (Modo no seguro - no recomendable)
+
 
 
 
