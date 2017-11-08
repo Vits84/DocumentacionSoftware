@@ -1,0 +1,51 @@
+/***********************
+		Apache
+ ***********************/
+
+
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 08-11-2017 | Instalación Apache Centos 7						| Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________________________________
+
+	 08-11-2017 | Configuración de sites-available y  sites-enabled | Stiv Verdugo |    1.0.0.1   
+	_______________________________________________________________________________________________
+
+
+ --------------------------------------------------------------------------------------------------/
+
+
+Centos 7: 
+
+	Instalación 
+
+	$ yum install httpd  apr-devel apr-util-devel httpd-devel libcurl-devel -y 
+
+	Configuración de sites-available y  sites-enabled
+
+
+	Tomando de : https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-centos-7
+	Consultado : 08 - 11 - 2017
+
+	$ mkdir /etc/httpd/sites-available
+	$ mkdir /etc/httpd/sites-enabled
+	$ nano /etc/httpd/conf/httpd.conf
+
+			Comentar la linea:
+
+			#IncludeOptional conf.d/*.conf
+
+			Agregar la final del archivo:
+
+			IncludeOptional sites-enabled/*.conf
+
+	$ nano /etc/httpd/sites-available/<nombre_configuracion>.conf
+	$ ln -s /etc/httpd/sites-available/<nombre_configuracion>.conf /etc/httpd/sites-enabled/<nombre_configuracion>.conf
+	$ service httpd restart
+
