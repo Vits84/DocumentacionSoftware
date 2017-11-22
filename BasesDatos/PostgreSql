@@ -3,6 +3,27 @@
  ***********************/
 
 
+------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 08-11-2017 | Instalación en Centos 7    | Stiv Verdugo |    1.0.0.0   |
+	_______________________________________________________________________
+
+	 22-11-2017 | Instalación en Debian 9    | Stiv Verdugo |    1.0.0.1   |
+	_______________________________________________________________________
+
+	 22-11-2017 | Instalación de Pgadmin3    | Stiv Verdugo |    1.0.0.2   |
+	_______________________________________________________________________
+
+
+ --------------------------------------------------------------------------/
+
+
+
+
 Instalación Centos 7: 
 
 	$ yum install postgresql-server postgresql-contrib -y
@@ -69,7 +90,6 @@ Instalación Debian 9
 	$ \q
 
 
-
 Backup Terminal Base de datos
 
 	$ PGUSER=<usuario> PGPASSWORD=<password> pg_dump -h <direccion base de datos> -d <base_datos> > <nombre_archivo_backup(.sql; .backup)>
@@ -77,6 +97,19 @@ Backup Terminal Base de datos
 Restaurar Terminal Backup Base de Datos
 	
 	$ PGUSER=<usuario> PGPASSWORD=<password> psql -h <direccion base de datos> -d <base_datos> -f <nombre_archivo_backup(.sql; .backup)>
+
+
+Instalación Pgadmin3
+	
+	Debian 9
+
+	$ apt-get install pgadmin3 -y
+
+	Centos 7 
+
+	$ yum install pgadmin3 -y
+
+
 
 
 
