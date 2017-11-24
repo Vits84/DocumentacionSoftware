@@ -30,7 +30,7 @@
 Instalación Centos 7: 
 
 	$ yum install postgresql-server postgresql-contrib -y
-	$ postgresql-setup initdb
+	$ /usr/bin/postgresql-setup initdb
 	$ nano /var/lib/pgsql/data/pg_hba.conf
         	Reemplazar:
 			host    all             all             127.0.0.1/32            md5
@@ -47,6 +47,8 @@ Instalación Centos 7:
 
 
 			
+	Para Iniciar con el sistema
+	
 	$ systemctl start postgresql
 	$ systemctl enable postgresql
 
