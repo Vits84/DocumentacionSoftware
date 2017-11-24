@@ -62,6 +62,9 @@ Iniciando una aplicación en Ionic:
 			$ cd <directorio_app>
 			$ ionic serve
 
+Instalación firebase (Base de datos para aplicaciones Ionic)
+	-> Instalación 
 
+			$npm install firebase angularfire2 --save
 
 
