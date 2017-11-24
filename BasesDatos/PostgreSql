@@ -18,6 +18,9 @@
 	 22-11-2017 | Instalación de Pgadmin3    | Stiv Verdugo |    1.0.0.2   |
 	_______________________________________________________________________
 
+	 22-11-2017 | Ajuste Instalación         | Stiv Verdugo |    1.0.0.3   |
+	              Pgadmin3  Centos 7
+	_______________________________________________________________________
 
  --------------------------------------------------------------------------/
 
@@ -60,7 +63,7 @@ Instalación Centos 7:
 	$ systemctl restart firewalld.service
 
 Instalación Debian 9
-
+	
 	$ apt-get install postgresql postgresql-9.6
 
 	$ systemctl start postgresql
@@ -103,11 +106,15 @@ Instalación Pgadmin3
 	
 	Debian 9
 
+
 	$ apt-get install pgadmin3 -y
 
 	Centos 7 
 
-	$ yum install pgadmin3 -y
+	$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	$ yum localinstall epel-release-latest-7.noarch.rpm
+	$ yum install pgadmin3.x86_64 -y
+
 
 
 
