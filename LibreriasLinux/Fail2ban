@@ -3,20 +3,55 @@
  ***********************/
 
 
-Intalación: 
+------------------------------Tabla Versiones------------------------------
+				 
 
-	$ apt-get install fail2ban -y
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
 
-Configuración 
+	 25-11-2017 | Instalación en Debian 9    | Stiv Verdugo |    1.0.0.0   |
+	 			  Configuración 
+	_______________________________________________________________________
 
-	$ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+	 ---------- | ---------------------------| Stiv Verdugo |    -------   |
+	_______________________________________________________________________
 
-Editar los siguientes parametros
+	 
+	_______________________________________________________________________
 
-	bantime  = 31104000 => tiempo de Banneo
-	maxretry = 1        => Número de Intentos Permitidos
+ --------------------------------------------------------------------------/
+
+Debian 9 
+
+		Intalación: 
+
+			$ apt-get install fail2ban -y
+
+		Configuración 
+
+			$ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+		Editar los siguientes parametros
+			$ nano  /etc/fail2ban/jail.local
+
+			bantime  = 31104000 => tiempo de Banneo
+			maxretry = 1        => Número de Intentos Permitidos
+
+		Listar Ip Banneadas
+
+			$ iptables -L -n
+
+		DesBannear Ip
+			
+			$ fail2ban-client set sshd unbanip <ip_banneada>
 
 
-Log de Ip Banneadas 
-	/var/log/auth.log 
-	
+		Log Fail2Ban
+
+			$ nano /var/log/fail2ban.log
+
+		Log de Ip Banneadas 
+			
+			$ nano /var/log/auth.log 
+			
+----------------------------------------------------------------------------
