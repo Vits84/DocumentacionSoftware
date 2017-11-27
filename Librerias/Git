@@ -1,0 +1,53 @@
+/***********************
+		  Git
+ ***********************/
+
+
+------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 25-11-2017 | Instalación en Debian 9    | Stiv Verdugo |    1.0.0.0   |
+	 			   
+	_______________________________________________________________________
+
+	 ---------- | ---------------------------| Stiv Verdugo |    -------   |
+	_______________________________________________________________________
+
+	 
+	_______________________________________________________________________
+
+ --------------------------------------------------------------------------/
+
+
+Debian 9 
+
+	Intalación
+
+		$  apt-get install git -y
+
+
+-----------------------------------------------------------------------------
+
+Funcionalidad
+
+
+	Crear Repositorio
+
+		$ cd <Directorio a crear repositorio>
+		$ git init
+
+	Agregar Repositorio Remoto	
+
+		$ git remote add <alias_repositorio_remoto> <dirección_url_repositorio>
+
+	Eliminar Repositorio Remoto
+
+		$ git remote rm <alias_repositorio_remoto>
+
+
+
+
+
