@@ -1,0 +1,92 @@
+/***********************
+		AngularJS
+ ***********************/
+
+
+
+/------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 05-12-2017 | Instalación				 | Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________
+
+	 00-00-0000 | Funcionalidades AngularJS  | Stiv Verdugo |    1.0.0.1  
+	 			  * Directivas (Parcial)
+	 			  * Dependencias (Parcial)
+	 			  * Filtros (Parcial)   
+	_______________________________________________________________________
+
+
+ --------------------------------------------------------------------------/
+
+
+Instalación 
+
+
+	Tomando de : https://angularjs.org/
+	Consultado : 05 - 12 - 2017
+
+	Se debe descargar el paquete y / o hacer referencia a este:
+
+		** Paquete
+			- Descargar de https://angularjs.org/
+			- Descomprimir el archivos angular.js o angular.min.js
+			- Hacer referencia a este en la primera etiqueta <script>
+
+				<script src: #directorio_de_archivo_angular# "angular.js" ></script>
+		** Referencia 
+			- Hacer referencia a este en la primera etiqueta <script> a la dirección de script oficial de angular
+
+				=> Dirección : https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js
+
+			<script src:"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js" ></script>
+
+
+
+----------------------------------------------------------------------------/
+
+Directivas  AngularJS
+
+	ng-app => Inidica que es una aplicación de angularJs
+	ng-controller => Nombre del controlador contenido dentro del modulo que hace refenrecia en ng-app
+	ng-model => Referencia a las variables al interior del modulo
+	ng-repeat => Similar a un foreach de php, puede recorrer arreglos declarados en el modelo
+	ng-click => Ejecuta un metodo referenciado en el modulo a partir de la acción de click del objeto (button, radiobutton, etc...)
+	ng-submit => Enviar Formulario
+
+
+----------------------------------------------------------------------------/
+Dependencias
+	
+	Http 
+		Permite realizar peticiónes de tipo Api : GET, POST, UPDATE, DELETE, PUT
+
+
+
+
+----------------------------------------------------------------------------/
+Filtros
+
+	Para  aplicar filtros se utiliza adicionando el simbolo "|"
+
+		Fecha:
+
+			date : 'short'
+				   'longDate'
+				   .
+				   .
+				   .
+
+			Consultar en pagina : https://docs.angularjs.org/api/ng/filter/date
+
+
+
+	
+
+
+
+
+
