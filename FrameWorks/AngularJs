@@ -56,6 +56,8 @@ Directivas  AngularJS
 	ng-repeat => Similar a un foreach de php, puede recorrer arreglos declarados en el modelo
 	ng-click => Ejecuta un metodo referenciado en el modulo a partir de la acción de click del objeto (button, radiobutton, etc...)
 	ng-submit => Enviar Formulario
+	ng-hide => Permite ocular de acuerdo a la condificon logica (true o false)
+	ng-show => Permite mostrar de acuerdo a la condificon logica (true o false)
 
 
 ----------------------------------------------------------------------------/
