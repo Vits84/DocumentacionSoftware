@@ -62,6 +62,7 @@ Directivas  AngularJS
 	ng-class => Asigna un clase cuando la validación o la variable sea true
 	ng-src =>  Directiva para ver referencia a una variable en angular correspondiente a una url
 	ng-cloak => Mostrar hasta que se cargue completamete la información de las variables
+	ng-view => Permite relacionar templates con el layout
 
 
 ----------------------------------------------------------------------------/
