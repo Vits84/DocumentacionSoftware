@@ -71,8 +71,65 @@ Dependencias
 	Http 
 		Permite realizar peticiónes de tipo Api : GET, POST, UPDATE, DELETE, PUT
 
+	ngRoute (Descargar o nombrar la libreria de acuerdo a la versión de AngularJs)
+		Permite crear redireccionamiento a partes del html en la misma pagina sin recargar
+
+		Ejemplo: 
+
+		.config(function($routeProvider) {
+			$routeProvider
+				.when("/",{
+					controller: "MainController",
+					templateUrl: "templates/home.html"
+				})
+				.when("/post/:id",{
+					controller: "PostController",
+					templateUrl: "templates/post.html"
+				})
+				.when("/posts/new",{
+					controller: "NewPostController",
+					templateUrl: "templates/post_form.html"
+				})
+				.when("/posts/edit/:id",{
+					controller: "PostController",
+					templateUrl: "templates/post_form.html"
+				})
+		})
+
+	ngResource (Descargar o nombrar la libreria de acuerdo a la versión de AngularJs)
+		Permite realizar peticiónes de tipo Api : GET, POST, DELETE
+
+		Ejemplo:
+
+		User = $resource("https://jsonplaceholder.typicode.com/users/:id",{id: "@id"});	
+
+		$scope.usuarios  = User.query();
+		$scope.usuarios  = User.save(data);
+		$scope.usuarios  = User.delete(data.id);
 
 
+		Permite tambien parametrizar nuevo metodos
+
+		Ejemplo: 
+
+		$resource("https://jsonplaceholder.typicode.com/posts/:id",{id: "@id"},{update: {method: "PUT"}});
+
+	LocalStorageModule (Descargar la libreria https://github.com/grevory/angular-local-storage)
+		Permite guardar el contenido asi se cierre el navegador por parte del cliente
+
+		Ejemplo: 
+
+			Obtener:
+
+				localStorageService.get("listas");
+
+			Actualizar:
+
+				localStorageService.set("listas",$scope.todo);
+
+
+
+	
 
 ----------------------------------------------------------------------------/
 Filtros
