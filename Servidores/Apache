@@ -17,6 +17,9 @@
 	 08-11-2017 | Configuración de sites-available y  sites-enabled | Stiv Verdugo |    1.0.0.1   
 	_______________________________________________________________________________________________
 
+	 15-12-2017 | Configuración General Centos 7 					| Stiv Verdugo |    1.0.0.2   
+	_______________________________________________________________________________________________
+
 
  --------------------------------------------------------------------------------------------------/
 
@@ -26,6 +29,18 @@ Centos 7:
 	Instalación 
 
 	$ yum install httpd  apr-devel apr-util-devel httpd-devel libcurl-devel -y 
+
+	Configuración General
+
+		Agregar puertos al firewall:
+
+			$ firewall-cmd --permanent --add-port=80/tcp
+			$ firewall-cmd --permanent --add-port=443/tcp
+			$ firewall-cmd --reload
+
+		Iniciar apache al iniciar sistema operativo
+			$ systemctl start httpd
+			$ systemctl enable httpd
 
 	Configuración de sites-available y  sites-enabled
 
