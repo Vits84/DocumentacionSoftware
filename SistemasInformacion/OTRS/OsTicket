@@ -1,0 +1,56 @@
+/***********************
+	   OsTicket
+ ***********************/
+
+
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 18-12-2017 | Instalación Os Ticket Core, v1.10.1 Centos 7		| Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________________________________
+
+	 
+	_______________________________________________________________________________________________
+
+
+ --------------------------------------------------------------------------------------------------/
+
+Requisitos:
+
+	- Apache
+	- PHP 5.6 +
+	- MySQL o MariaDB Database: 5.0 +
+
+Instalación Centos 7
+
+	- Descargar en la pagina de OsTicket : http://osticket.com
+
+	- Descomprimir en el directorio :
+
+		$ cd /var/www/html
+		$ unzip -x osTicket-v1.10.1.zip
+		$ mv upload <nombre>
+
+	- Descomrimir en el directorio :
+
+		$ cd /var/www/html
+		$ unzip -x osTicket-v1.10.1.zip
+		$ mv upload <nombre>	
+
+	- Archivo de configuración
+
+		$ cd /var/www/html/osticket
+		$ cp include/ost-sampleconfig.php include/ost-config.php
+		$ chmod 777 include/ost-config.php
+		$ chcon -t httpd_sys_rw_content_t include/ost-config.php
+		
+	- Ingresar al navegador a la dirección :
+
+		http://localhost/<nombre>
+
+	- Verificar los paquetes faltantes a instalar de php y verificar la instalación de mysql o mariadb
