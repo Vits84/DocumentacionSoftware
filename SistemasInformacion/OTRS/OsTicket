@@ -14,7 +14,7 @@
 	 18-12-2017 | Instalación Os Ticket Core, v1.10.1 Centos 7		| Stiv Verdugo |    1.0.0.0   
 	_______________________________________________________________________________________________
 
-	 
+	 18-12-2017 | Instalación paquete de lenguaje					| Stiv Verdugo |    1.0.0.1  
 	_______________________________________________________________________________________________
 
 
@@ -48,9 +48,61 @@ Instalación Centos 7
 		$ cp include/ost-sampleconfig.php include/ost-config.php
 		$ chmod 777 include/ost-config.php
 		$ chcon -t httpd_sys_rw_content_t include/ost-config.php
-		
+
 	- Ingresar al navegador a la dirección :
 
 		http://localhost/<nombre>
 
 	- Verificar los paquetes faltantes a instalar de php y verificar la instalación de mysql o mariadb
+
+	- Eliminar Directorio Setup
+
+		$ rm -rf setup
+
+	- Cambiar permisos archivo de configuración
+
+		$ chmod 644 ost-config.php
+
+Instalación paquete de lenguaje
+
+	- Ingresar al directorio del osTicket
+	
+		$ cd directorio_os_ticket
+		$ cd include/i18n/
+
+	- Crear Directorio de acuerdo al lenguaje por ejemplo es_ES
+
+		$ mkdir es_ES
+
+	- Descargar el paquete correpondiente al idioma al interior del directorio creado anteriomente
+
+	- Crear archivo para extraer el paquete de idiona descargado
+
+		$ nano extract.php
+
+			<?php 
+			try { 
+			$phar = new Phar('<paquete de idioma>.phar'); 
+			$phar->extractTo('./',null,true); // extract all files 
+			} catch (Exception $e) { 
+			echo "there was an error<br>"; 
+			print_r($e); 
+			} 
+			?> 
+
+	- Ejecutar extract.php
+
+		$ php extract.php
+
+	- Modificar el archivo include/class.config.php para adicionar el lenguaje descargado
+
+		Linea a modificar
+
+		'system_language' => 'en_US',
+
+		por 
+
+		'system_language' => 'es_ES',
+
+	- Guardar Archivo y Recargar la Pagina
+
