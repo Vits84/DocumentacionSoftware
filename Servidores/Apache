@@ -64,3 +64,11 @@ Centos 7:
 	$ ln -s /etc/httpd/sites-available/<nombre_configuracion>.conf /etc/httpd/sites-enabled/<nombre_configuracion>.conf
 	$ service httpd restart
 
+Permisos de Usuario www-data
+
+	$chown -R  www-data  /var/www/html
+	$chmod -R g+w /var/www
+
+	
+
+
