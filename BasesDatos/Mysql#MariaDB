@@ -35,3 +35,20 @@ Instalación Centos 7:
 		$ nano  /etc/httpd/conf.d/phpMyAdmin.conf
 			Reemplazar: 127.0.0.1 por la Ip desde donde se va acceder
 		$ service httpd restart
+
+Instalación Centos 9:
+	
+	MariaDB
+		$ apt-get install mysql-server mysql-client -y
+		$ mysql_secure_installation
+
+	PhpMyAdmin
+
+		$ apt-get install phpmyadmin -y
+		$ nano /etc/apache2/apache2.conf
+			
+			Agregar al final del Archivo
+			# Habilitar phpmyadmin
+			Include /etc/phpmyadmin/apache.conf
+
+		$ service apache2 restart

@@ -1,0 +1,55 @@
+/***********************
+		PHP
+ ***********************/
+
+
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 22-11-2017 | Instalación PHP Debian 9   						| Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________________________________
+
+	 18-12-2017 | Instalación PHP 5.6 Centos 7 						| Stiv Verdugo |    1.0.0.1   
+
+ --------------------------------------------------------------------------------------------------/
+
+Debian 9
+
+	PHP 5.6
+		$ apt-get install apt-transport-https lsb-release ca-certificates
+		$ wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+		$ echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+		$ apt-get update
+		$ apt-get install php5.6 -y
+		$ apt-get install php5.6-pdo-pgsql php5.6-pdo-mysql php5.6-pdo-odbc php5.6-pdo-dblib php5.6-pdo -y
+
+	Instalar Mcrypt
+
+		$ apt-get install php5.6-mcrypt php-mcrypt -y
+		
+	Instalar xdebug
+
+		$ apt-get install php-xdebug php5.6-xdebug -y	
+
+
+Centos 7: 
+
+
+	PHP 5.6
+
+		$ yum -y update
+   		$ yum -y install epel-release
+   		$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   		$ wget https://centos7.iuscommunity.org/ius-release.rpm
+   		$ rpm -Uvh ius-release*.rpm
+   		$ yum -y update
+   		$ yum -y install php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath php56u-soap
+
+
+
+

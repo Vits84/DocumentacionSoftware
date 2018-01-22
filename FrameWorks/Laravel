@@ -1,0 +1,53 @@
+/***********************
+		Laravel
+ ***********************/
+
+
+
+/------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 07-11-2017 |                            | Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________
+
+
+ --------------------------------------------------------------------------/
+
+ Instalación:
+
+
+
+-----------------------------------------------------------------------------
+ Documentación: 
+
+ 	Ejecutar Migración:
+
+ 		$ php artisan migrate
+
+ 	Reiniciar migración (Elimina y Crea las tablas)
+
+ 		$ php artisan migrate:refresh
+
+ 	Reiniciar migración con ejecuci´on de los seeders (Elimina,Crea las tablas y pobla las mismas
+ 	con datos)
+
+ 		$ php artisan migrate:refresh --seed
+
+
+-----------------------------------------------------------------------------
+ Soluciones Errores Comunes:
+
+ 	- Error : 
+ 		"The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths" 	
+
+ 	  Solución :
+
+ 	  	$ php artisan key:generate
+ 	  		Application key [base64:kFNkHLDKqyL5XY56olBNh2Qeq4wjcstKHh7m2TElYSw=] set successfully.
+ 	  	Copiar en .env en APP_KEY y guardar
+ 	  		APP_KEY=base64:kFNkHLDKqyL5XY56olBNh2Qeq4wjcstKHh7m2TElYSw=
+ 	  	$ php artisan config:clear
+ 	  	$ php artisan config:cache
