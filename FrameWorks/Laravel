@@ -10,16 +10,77 @@
 	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
 	_______________________________________________________________________
 
-	 07-11-2017 |                            | Stiv Verdugo |    1.0.0.0   
+	 07-11-2017 | Documentacion Laravel      | Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________
+
+	 13-02-2018 | Instalacion  Laravel       | Stiv Verdugo |    1.0.0.1   
+	 					Centos 7  
 	_______________________________________________________________________
 
 
- --------------------------------------------------------------------------/
+---------------------------------------------------------------------------
+
 
  Instalación:
 
 
+ 	Centos 7
 
+		 	Pre-Requisitos:
+		 		- Apache(centos => httpd)
+				- php 7 
+				- Composer
+
+			Procedimiento: 
+
+				Directorio raiz apache
+
+				$ cd /var/www/html
+				$ composer create-project laravel/laravel <nombre_aplicativo>
+
+				Configuracion apache redireccionamiento
+
+				$ nano -c /etc/httpd/conf/httpd.conf
+
+				Cambiar la variable DocumentRoot por
+
+					DocumentRoot "/var/www/html/<nombre_aplicativo>/public"
+
+				Adicionar la excepcion al SELINUX
+
+				$ chcon -R -t httpd_sys_rw_content_t storage
+
+				Reiniciar Apache
+
+				$ service httpd restart
+
+
+-----------------------------------------------------------------------------
+ Instalar Proyecto Laravel Repositorio Git:
+
+ 	Requisitios
+ 		* Debe estar instalado y en total funcionamiento composer 
+ 		* Instalado PHP
+ 		* Instalado Apache y/o Nginx(Opcional recomendado en entorno de produccion)
+
+ 	Ingresar al directorio a trabajar:
+
+ 		$ cd <directorio>
+ 		$ git clone <Direccion url repositorio terminado en .git>
+
+ 	Ingresar las respectivas credenciales del repositorio
+
+ 		$ cd <nombre repositorio>
+
+ 	Ejecutar la actualizacion del composer
+
+ 		$ composer update
+
+ 	Opcional (Ejecutar Servidor con Artisan)
+
+ 		$ php artisan serve
+ 			Revisar el navegador en la direccion http://localhost:8000
+ 
 -----------------------------------------------------------------------------
  Documentación: 
 
