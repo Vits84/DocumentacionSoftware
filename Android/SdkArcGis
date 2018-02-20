@@ -1,0 +1,80 @@
+/***********************
+		SDK ArcGIS
+ ***********************/
+
+
+
+/------------------------------Tabla Versiones------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 |     Autor    |    Versión   |
+	_______________________________________________________________________
+
+	 10-02-2018 | Instalación ArcGis SDK	 | Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________
+
+
+ --------------------------------------------------------------------------/
+
+
+Instalación 
+
+
+	Tomando de : https://developers.arcgis.com/android/latest/guide/install-and-set-up.htm
+	Consultado : 10-02-2018
+
+	Instalacion Pagina Oficial:
+
+	- Editar el archivo gradle del proyecto que quede de esta manera: 
+
+			allprojects {
+			  repositories {
+			    google()
+			    jcenter()
+			    
+			    // Add the Esri public Bintray Maven repository
+			    maven {
+			        url 'https://esri.bintray.com/arcgis'
+			    }
+			  }
+			}
+
+	- Agregar al archivo gradle general (Module) que quede de esta manera: 
+
+			dependencies { 
+			  implementation 'com.esri.arcgisruntime:arcgis-android:100.2.0' 
+			  [...]
+			}
+
+
+	Tomando de : https://community.esri.com/thread/190133-failed-to-resolve-comesriarcgisruntimearcgis-android10000
+	Consultado : 10-02-2018
+
+	Instalacion recomendada  dado los siguientes problemas:
+
+		* Failed to resolve: com.esri.arcgisruntime:arcgis-android:1xx.x.
+		* Al compilar la aplicacion sin errores aparentes de codigo sale : Failed resolution of: Lcom/esri/arcgisruntime/R$drawable;
+
+	Procedimiento 
+
+		- Editar el archivo gradle del proyecto que quede de esta manera: 
+
+				allprojects {
+				  repositories {
+				    google()
+				    jcenter()
+				    
+				    // Add the Esri public Bintray Maven repository
+				    maven {
+				        url 'https://esri.bintray.com/arcgis'
+				    }
+				  }
+				}
+
+		- Agregar al archivo gradle general (Module) de acuerdo a la version deseada: 
+
+				dependencies { 
+				  compile 'com.esri.arcgisruntime:arcgis-android:100.x.x'
+				  [...]
+				}
+
