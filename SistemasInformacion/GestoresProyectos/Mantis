@@ -1,0 +1,94 @@
+/***********************
+	   Mantis
+ ***********************/
+
+
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 06-04-2018 | Instalación MantisBT 2.13.1   					| Stiv Verdugo |    1.0.0.0   
+	_______________________________________________________________________________________________
+
+	 
+	_______________________________________________________________________________________________
+
+
+ --------------------------------------------------------------------------------------------------/
+
+
+Centos 7: 
+
+	Requerimientos:
+		- Base de Datos 
+				MySQL	5.5.35	5.6 or above	PHP extension: mysqli
+				MariaDB	5.5.35	10.x or above	PHP extension: mysqli
+				PostgreSQL	9.2	9.2 or later	PHP extension: pgsql
+				MS SQL Server	2012	2012 or later	PHP extension: sqlsrv
+				Oracle
+		- PHP 
+				PHP	5.5.x	7.0 or later
+		- Servidor Web
+				Apache	2.2.x	2.4.x	 
+				lighttpd	1.4.x	1.4.x	 
+				nginx	1.10.x	1.10.x	 
+				IIS	7.5	8.0
+
+	Instalación:
+		* Para esta instalación se realizo con Base de Datos MariaDB 5.5, Apache y PHP 5.6
+
+		Revisar la versión mas reciente de mantis para descargar (https://www.mantisbt.org/download.php)
+
+			Usuario Administrador
+				$ cd /var/www/
+				$ chmod 777 -R  html
+				$ cd html
+
+			Usuario General
+				$ cd /var/www/html
+				$ wget https://ufpr.dl.sourceforge.net/project/mantisbt/mantis-stable/2.13.1/mantisbt-2.13.1.tar.gz 
+				$ tar -xzf mantisbt-2.13.1.tar.gz 
+				$ mv mantisbt-2.13.1 mantisbt
+
+		Configuraciones selinux
+
+			Usuario Admnistrador
+				$ setsebool -P httpd_can_network_connect 1
+  				$ setsebool -P httpd_can_network_connect_db 1
+  				$ ausearch -c 'httpd' --raw | audit2allow -M my-httpd
+  				$ semodule -i my-httpd.pp
+  				$ cd /var/www/html/mantisbt
+  				$ semanage fcontext -a -t httpd_sys_rw_content_t 'config'
+
+  		Ingresar al sitio (http://{sitio}/mantisbt/admin/install.php)
+
+  			- Verificar los pre-requisitos y completar la información el acceso a la base de datos correspondiente a la guia:
+  				
+  				Parametros
+
+	  				Type of Database	
+
+					Hostname (for Database Server)	
+					Username (for Database)	
+					Password (for Database)	
+					Database name (for Database)	
+					Admin Username (to create Database if required)	
+					Admin Password (to create Database if required)	
+					Database Table Prefix	
+					Database Plugin Table Prefix	
+					Database Table Suffix	
+					Default Time Zone	
+					Print SQL Queries instead of Writing to the Database	
+
+			- Seleccionar la opción continuar, lo cual redireccionara a la pagina princila del aplicativo deonde se perdira las credeciales de acceso las cuales son por defecto:
+				Usuario: Administrator
+				Password: root	
+
+
+
+
+
