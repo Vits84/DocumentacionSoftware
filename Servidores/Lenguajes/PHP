@@ -6,15 +6,15 @@
 
 
 /------------------------------Tabla Versiones-----------------------------------------------------
-				 
+
 
 	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
 	_______________________________________________________________________________________________
 
-	 22-11-2017 | Instalación PHP Debian 9   						| Stiv Verdugo |    1.0.0.0   
+	 22-11-2017 | Instalación PHP Debian 9   						| Stiv Verdugo |    1.0.0.0
 	_______________________________________________________________________________________________
 
-	 18-12-2017 | Instalación PHP 5.6 Centos 7 						| Stiv Verdugo |    1.0.0.1   
+	 18-12-2017 | Instalació wget https://centos7.iuscommunity.org/ius-release.rpmn PHP 5.6 Centos 7 						| Stiv Verdugo |    1.0.0.1
 
  --------------------------------------------------------------------------------------------------/
 
@@ -31,13 +31,13 @@ Debian 9
 	Instalar Mcrypt
 
 		$ apt-get install php5.6-mcrypt php-mcrypt -y
-		
+
 	Instalar xdebug
 
-		$ apt-get install php-xdebug php5.6-xdebug -y	
+		$ apt-get install php-xdebug php5.6-xdebug -y
 
 
-Centos 7: 
+Centos 7:
 
 
 	PHP 5.6
@@ -49,7 +49,3 @@ Centos 7:
    		$ rpm -Uvh ius-release*.rpm
    		$ yum -y update
    		$ yum -y install php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath php56u-soap
-
-
-
-

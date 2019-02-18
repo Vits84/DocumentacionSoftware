@@ -1,0 +1,33 @@
+/***********************
+		Ldap
+ ***********************/
+
+
+
+
+/------------------------------Tabla Versiones-----------------------------------------------------
+				 
+
+	    Fecha	|  			Nombre 			 						|     Autor    |    Versión   |
+	_______________________________________________________________________________________________
+
+	 08-02-2018 | Instalacion Ldap y phpLdapAdmin Centos 7			| Stiv Verdugo |    1.0.0.0   
+
+ --------------------------------------------------------------------------------------------------/
+
+Centos 7: 
+
+
+	PHP 5.6
+
+		$ yum -y update
+   		$ yum -y install epel-release
+   		$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   		$ wget https://centos7.iuscommunity.org/ius-release.rpm
+   		$ rpm -Uvh ius-release*.rpm
+   		$ yum -y update
+   		$ yum -y install php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath php56u-soap
+
+
+
+
